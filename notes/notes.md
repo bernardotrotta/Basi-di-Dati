@@ -137,4 +137,45 @@ Lo schema progettuale è dato da un diagramma secondo il modello entità-relazio
 Dallo schema concettuale si deriva: 
 - **Schema logico:** descrive la struttura dell'intera base dei dati mediante il modello logico adottato dai DBMS (reticolare, gerarchico, relazionale).
 - **Schema interno:** Implemena lo schema lofico mediante le strutture fisiche di memorizzazione.
-- 
+
+
+### Note
+Aggiungi informazioni sulla architettura standard (ANSI/SPARC) a tre livelli per DBMS
+- Concetto di vista
+
+
+## Accesso alla base di dati
+È possibile accedere alla base di dati tramite i seguenti strumenti
+- Linguaggi testuali interattivi (Linea di comando, interprete SQL, ecc...)
+- Comandi inclusi in estenzioni di linguaggi tradizionali (API di Python)
+- Comandi inclusi in linguaggi di sviluppo ad hoc (fornita dal DBMS come ambiente di sviluppo orientato ad ottimizare le sue prestazioni)
+- Interfacce grafiche amichevoli (Microsoft Access)
+
+
+**Linguaggi di definizione di dati:** Attraverso SQL possiamo popolare la base di dati 
+**Linguaggi di manipolazione di dati:** Utilizzati per interogare e aggiornare i contenuti della base di dati
+
+> **Nota:** SQL presenta entrambe le caratteristiche di linguaggio.
+    
+- Ottimizzatore delle query
+- Per la manutenzione di una base di dati è fondamentale che il codice e la documentazione e le aplicazioni che devono accedere alla base di dati, privilegino la chiarezza
+  
+## SQL, un linguaggio interattivo e algebra relazionale
+- SELECT Corso, Aula, Piano
+- FROM Aule, Corsi
+- WHERE Nome = Aula
+- AND Piano = "Terra"
+
+Criteri di selezione o di proiezione
+
+## Vantaggi dei DBMS
+- Disponibilità di dati per tutta una comunità, indipendezza del dato rispetto alla singola applicazione
+- Modello unificato e preciso della realtà di interesse
+- Controllo centralizzato dei dati
+- Condivisione
+- Indipendenza dei dati
+
+## Svantaggi dei DBMS
+- Prodotti complessi che richiedono investimenti in hardware, software e personale
+  
+
