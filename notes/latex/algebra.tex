@@ -1,0 +1,126 @@
+% Documento principale
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{flafter} 
+
+\title{Algebra relazionale}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Algebra relazionale}
+
+L'algebra relazionale è un linguaggio procedurale utilizzato nell'ambito delle basi di dati per costruire interrogazioni; si parla quindi di linguaggi di interrogazione.
+
+\begin{itemize}
+  \item È costituita da un insieme di \textit{operatori} definiti su \textit{relazioni}.
+  \item Produce una nuova relazione a sua volta.
+\end{itemize}
+
+\section{Operatori}
+
+\subsection{Operatori insiemistici}
+\begin{enumerate}
+  \item Unione
+  \item Intersezione
+  \item Differenza
+\end{enumerate}
+
+\subsection*{Operatori specifici}
+\begin{enumerate}
+  \item Ridenominazione
+  \item Selezione
+  \item Proiezione
+\end{enumerate}
+
+\subsection*{Join}
+\begin{enumerate}
+  \item Join Naturale
+  \item Prodotto cartesiano
+  \item Theta Join
+\end{enumerate}
+
+\subsection*{Operatori insiemistici}
+Le relazioni sono insiemi di tuple omogenee; pertanto, è necessario ereditare le operazioni fondamentali della teoria degli insiemi.
+Importante notare che le relazioni devono essere definite sugli stessi attributi.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Matricola & Cognome & Età \\ \hline
+7274      & Rossi   & 37  \\ \hline
+7432      & Neri    & 39  \\ \hline
+9824      & Verdi   & 28  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Matricola & Cognome & Età \\ \hline
+9297      & Neri    & 56  \\ \hline
+7432      & Neri    & 39  \\ \hline
+9824      & Verdi   & 38  \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Unione}
+L'unione di due relazioni $r_1$ e $r_2$ definite sullo stesso insieme $X$ di attributi è una relazione ancora su $X$ contenente le tuple che appartengono a $r_1$, oppure ad $r_2$, oppure ad entrambe. È indicata con $r_1 \cup r_2$.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Matricola & Cognome & Età \\ \hline
+7274      & Rossi   & 37  \\ \hline
+7432      & Neri    & 39  \\ \hline
+9824      & Verdi   & 28  \\ \hline
+9297      & Neri    & 56  \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Intersezione: $r_1 \cap r_2$}
+L'intersezione di $r_1(X)$ e $r_2(X)$ è una relazione su $X$ contenente le tuple che appartengono sia a $r_1$ sia a $r_2$. $r_1 \cap r_2$.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Matricola & Cognome & Età \\ \hline
+7432      & Neri    & 39  \\ \hline
+9824      & Verdi   & 28  \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Differenza}
+La differenza di $r_1(X)$ e $r_2(X)$ è una relazione su $X$ contenente le tuple che appartengono ad $r_1$ e non appartengono ad $r_2$. È indicata con $r_1 - r_2$.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Matricola & Cognome & Età \\ \hline
+7274      & Rossi   & 37  \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Operatori specifici}
+
+\subsubsection*{Ridenominazione}
+Cambia i nomi degli attributi a seconda delle necessità, al fine di superare le limitazioni imposte agli operatori insiemistici. Da notare che la ridenominazione non cambia il contenuto della relazione e agisce solo sullo schema.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Padre & Figlio \\ \hline
+Madre & Figlio \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

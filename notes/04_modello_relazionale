@@ -55,18 +55,26 @@ Conseguenze:
 
 Uno schema di relazione è la rappresentazione di una relazione
 $R(X)$
+- Lettera maiuscola indica lo schema
 - Le istanze di uno schema si rappresentano con la lettera minuscola
 
 Esempio
 Corsi(Codice, Titolo, Docente)
-$X = \{A_1, A_2, ... , A_n\}$
-$\text$
-$X = \{A_1, A_2, ... , A_n\}$
-$\text$
+
+$X = \{A_1, A_2, ... , A_n\}$ <br>
+$\text{Codice} = \{01,02,03\}$ <br>
+$\text{Titolo} = \{\text{Analisi, Chimica}\}$ <br>
+$\text{Docente} = \{\text{Rossi, Bruni, Verdi}\}$
 
 | Codice | Titolo | Docente
 | --- | --- | --- |
 | 01 | Analisi | Rossi |
 | 02 | Chimica | Bruni |
 | 04 | Chimica | Verdi |
+
+Posso ora definire il concetto di Base di dati: insieme di schemi i relazioni con nomi diversi
+$$R = \{R_n(X_n)\}$$
+
+A livello di rappresentazione una base di dati è un insieme di tabelle. 
+
 

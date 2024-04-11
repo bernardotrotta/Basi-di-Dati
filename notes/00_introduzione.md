@@ -23,7 +23,12 @@
 - **Base di dati:** collezione di dati strutturata secondo un modello scelto (relazionale, logico, ecc...).
 - **Normalizzazione:** valutazione a posteriori per verificare che lo schema realizzato dia garanzie.
 - **Transazioni:** operazioni che garantiscono l'assenza di problemi nel momento in cui viene fatto un accesso multiplo e contemporaneo al dato.
-- Un database SQL usa dei record json che sono totalmente liberi e svincolati
+- Un database
+
+## Lezioni
+- [Database Model System (DBMS)](dbms.md)
+- [Modello entità-relazione](modello_entità-relazione.md)
+
 
 ## Database Managment System (DBMS)
 Sistema software che permette di gestire le *basi di dati*.
@@ -44,12 +49,7 @@ Sistema software che permette di gestire le *basi di dati*.
 - **Rigidità:** Modifiche alla struttura della base di dati possono richiedere la ristrutturazione delle applicazioni dipendenti, comportando potenziali costi di risorse e tempo. Tuttavia, l'adozione di pratiche di progettazione flessibili e l'uso di strumenti come le "viste" possono mitigare questo problema.
 - **Complessità:** Prodotti complessi che richiedono investimenti in hardware, software e personale
 
-## Progettazione di una base di dati
-La progettazione di una base di dati si svolge attraverso una serie di fasi specifiche elencate di seguito: 
-1. Raccolta delle specifiche
-2. Progettazione concettuale
-3. Progettazione logica
-4. Progettazione fisica
+
 
 >Nota: ogni fase fa riferimento ad una strutturazione specica detta *modello dei dati* 
 
@@ -94,22 +94,7 @@ La relazione è caratterizzata da specifici attributi.
 
 **Attributi multi-valore:** si riferiscono a quegli attributi di un'entità che possono assumere più di un valore per ogni istanza dell'entità stessa. Ad esempio, un'entità "Persona" potrebbe avere un attributo "Telefono" che può contenere più numeri di telefono. Gli attributi multi-valore possono essere gestiti nei modelli concettuali e logici attraverso appropriate strutture dati, come array o elenchi.
 
-## Modelli logici
-Modelli le quali strutture, pur essendo astratte, riflettono una specifica costruzione locio-matematica (alberi, grafi, tabelle, oggetti), con cui i dati possono essere organizzati all'interno del calcolatore. Di seguito i modelli logici più utilizzati:
 
-- **Modello relazionale:** basato su un modello tabellare dei dati
-- **Modello gerarchico:** basato su strutture ad albero, utilizzato nei primi DBMS (anni 60)
-- **Modello reticolare:** basato sui grafi, estende il modello gerarchico
-- **Modello a oggetti:** basato sui paradigmi della *programmazione ad oggetti,* estende il modello relazionale
-- **Modello semistrutturato (XML):** Deriva dal modello gerarchico ma è più flessibile
-
-## Modello relazionale
-In informatica il modello relazionale è una teoria matematica che offre gli strumenti concettuali per modellare una base di dati in termini di valori atomici e relazioni tra di essi.
-
-Codice utilizzato nel calcolatore
-- Non valgono gli attributi multi-valore
-- Un modello relazionale è poco efficiente dal piunto di vista computazionale ma robusto per la consistenza dei dati, perché caratterizzato da un numero di vincoli elevato che devono essere rispettati in qualunque momento.
-- 
 ## Architettura Client-Server
 Utente, Applicazioe, Richiesta al Server, Richiesta all'interprete SQL, Risposta HTML
 
@@ -118,6 +103,7 @@ Utente, Applicazioe, Richiesta al Server, Richiesta all'interprete SQL, Risposta
 Nel modello concettuale entità relazione, i concetti vengono rappresentati con rettangoli, la relazione con dei robi, la coppia numerica indica numero minimo e numero massimo in cui una istanza di una certa entità è coinvolta in una relazione
 
 **Esempio:**
+
 $$\text{Prodotto} \rightarrow \text{Acquisto} \rightarrow \text{Cliente}$$
 
 Quei valori si chiamano cardinalità minima o numero di occorrenza minima. 
@@ -176,45 +162,5 @@ Aggiungi informazioni sulla architettura standard (ANSI/SPARC) a tre livelli per
 
 Criteri di selezione o di proiezione
   
-### Progettazione concettuale
-Finalizzata alla progettaazione dei dati, definisce cosa verrà inserito nella base dei dati. Si divide nei seguenti steps:
-- **Studio di fattibilità:** si studiano alternative possibili, si valutano i costi e le priorità di realizzazioni.
-- **Raccolta e analisi dei requisiti:** Fase in cui si raggiungono le specifiche per realizzare la base di dati, bisogna definire, ancora in modo astratto le funzionalià del sistema tramite l'interazione con gli utenti e la definizione informale dei dati e delle operazioni. 
 
-### Progettazione logica
-Trasforma le informazioni descitte nella progettazione concettuale con tutti i relativi modelli in un prodotto fisico, accessibile e funzionale. Individua la struttura e organizzazione dei dati e le caratteristiche degli applicativi che vi dovranno accedere.
-- **Progettazione dei dati:** 
-- **Progettazione delle applicazioni:** 
 
-### Implementazione
-Realizza la base dei dati e il codice dei programmi conformemente alle specifiche
-
-### Validazione e collaudo
-Verifica il corretto funzionamento del sistema informativo realizzato
-
-### Funzionamento
-Il sistema informativo viene resto operativo 
-
-## Metodologia di progettazione
-Una metodologia di progettazione è un algorigtmo atto a sviluppare correttamente una base di dati
-
-## Progettazione di una base di dati
-Di seguito le fasi della progettazione di una base dei dati
-- Raccolta delle specifiche
-- Progettazione concettuale
-- Progettazione logica
-- Progettazione fisica
-
-- **Strategia top-down:** viene generato un sistema in cui ogni concetto ha una sua complessità, si parte quindi da una definizione ad alto livello di astrazione. 
-- **Strategia bottom-up:** si parte da un livello specifico di generalizzazione, fino a ricustruire un alto livello di astrazione. 
-
-## Metodologia di valutazione
-- **Generalità:** il prodotto realizzato deve garantire la possibilità di utilizzare una metodologia independentemente dal problema affrontato
-- **Qualità del prodotto:** (correttezza, completezza, efficienza)
-- **Facitlità di utilizzo:** il proodotto realizzatto deve essere facilmente usufruibile 
-
-## Raccolta delle speficiche
-È una fase in cui si raccolgono dati e appunti, parzialmente formalizzati, osservare le relazioni causa-effetto che risiede tra i dati
-- Quali concetti o quali dati, da riunire poi nella descrizione si siversi concetti si devono rappresentare?
-- Quali relazioni logiche li collegano?
-- In quali situazioni e quanto spesso si usano?
