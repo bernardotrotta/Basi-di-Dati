@@ -1,22 +1,24 @@
+<link href="styles.css" rel="stylesheet"></link>
+
 # Modelli logici
-Modelli le quali strutture, pur essendo astratte, riflettono una specifica costruzione locio-matematica (alberi, grafi, tabelle, oggetti), con cui i dati possono essere organizzati all'interno del calcolatore. I modelli logici sono alla base delle differenziazioni dei DBMS. Di seguito i modelli logici più utilizzati:
+Modelli le quali strutture, pur essendo astratte, riflettono una specifica costruzione logico-matematica (alberi, grafi, tabelle, oggetti), con cui i dati possono essere organizzati all'interno del calcolatore. I modelli logici sono alla base delle differenziazioni dei DBMS. Di seguito i modelli logici più utilizzati:
 
 - **Modello relazionale:** basato su un modello tabellare dei dati
 - **Modello gerarchico:** basato su strutture ad albero, utilizzato nei primi DBMS (anni 60)
 - **Modello reticolare:** basato sui grafi, estende il modello gerarchico
 - **Modello a oggetti:** basato sui paradigmi della *programmazione ad oggetti,* estende il modello relazionale
-- **Modello semistrutturato (XML):** Deriva dal modello gerarchico ma è più flessibile
+- **Modello semi-strutturato (XML):** Deriva dal modello gerarchico ma è più flessibile
 
 ## Modello relazionale
 In informatica il modello relazionale è una teoria matematica che offre gli strumenti concettuali per modellare una base di dati in termini di valori atomici e relazioni tra di essi.
 
 Codice utilizzato nel calcolatore
 - Non valgono gli attributi multi-valore
-- Un modello relazionale è poco efficiente dal piunto di vista computazionale ma robusto per la consistenza dei dati, perché caratterizzato da un numero di vincoli elevato che devono essere rispettati in qualunque momento.
+- Un modello relazionale è poco efficiente dal punto di vista computazionale ma robusto per la consistenza dei dati, perché caratterizzato da un numero di vincoli elevato che devono essere rispettati in qualunque momento.
 
 ### Modello relazionale 
-È un modello logico che definisce organizza i dati secondo record a struttura fisa rappresentabili attraverso tabelle. 
-Secondo il modello relazionale, ogni istanza di una relazione è descritta dagli atributi che devono essere istanziati. La relazione ò un insieme di valori definiti secondo un preciso ordine 
+È un modello logico che definisce organizza i dati secondo record a struttura fisica rappresentabili attraverso tabelle. 
+Secondo il modello relazionale, ogni istanza di una relazione è descritta dagli attributi che devono essere istanziati. La relazione un insieme di valori definiti secondo un preciso ordine 
 
 ### Schemi
 In ogni base di dati si possono distinguere:
@@ -32,7 +34,7 @@ Lo schema progettuale è dato da un diagramma secondo il modello entità-relazio
 
 Dallo schema concettuale si deriva: 
 - **Schema logico:** descrive la struttura dell'intera base dei dati mediante il modello logico adottato dai DBMS (reticolare, gerarchico, relazionale).
-- **Schema interno:** Implemena lo schema lofico mediante le strutture fisiche di memorizzazione.
+- **Schema interno:** Implementa lo schema logico mediante le strutture fisiche di memorizzazione.
 
 ## Definizioni
 
@@ -48,8 +50,8 @@ $$R = \{R_1(X_1),R_2(X_2),...,R_n(X_n),\}$$
 
 
 ## Informazione incompleta
-Le tuple che compongono la base di dati devono essere omogenee. Quinid in ogni tupla ad ogni attributio deve essere associato un valore. non sempre questo è possibile 
-- **Soluzione 1:** inserire un valore non utilizzato, ma potrebbero non esistere valori non utilizzati oppure,, potrebbero essere utiizzati in futuro. In più, chi usa la mia base di dati deve sapere che convenzione sto utilizando. 
+Le tuple che compongono la base di dati devono essere omogenee. Quindi in ogni tupla ad ogni attributo deve essere associato un valore. non sempre questo è possibile 
+- **Soluzione 1:** inserire un valore non utilizzato, ma potrebbero non esistere valori non utilizzati oppure,, potrebbero essere utilizzati in futuro. In più, chi usa la mia base di dati deve sapere che convenzione sto utilizzando. 
 - **Soluzione 2;
 - 
 **

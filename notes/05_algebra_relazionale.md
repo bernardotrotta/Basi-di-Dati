@@ -9,17 +9,17 @@ L'algebra relazionale è un linguaggio procedurale, utilizzato nell'ambito delle
   2. Intersezione
   3. Differenza
 - **Specifici:**
-  1. Ridenominazione
+  1. Ri-denominazione
   2. Selezione
   3. 3.Proiezione
 
 - **Join:**
-  1. Join Naurale
+  1. Join Naturale
   2. Prodotto cartesiano
-  3. Theata Join
+  3. Theta Join
 
 ### Operatori insiemistici
-Le relazioni sono insiei di tuple *omogenee*, pertanto è fondamentale ereditare le operazioni fondamentali della teoria degli insiemi.
+Le relazioni sono insiemi di tuple *omogenee*, pertanto è fondamentale ereditare le operazioni fondamentali della teoria degli insiemi.
 Importante notare che le relazioni devono essere definite su gli stessi attributi.
 
 | Matricola | Cognome | Età |
@@ -35,7 +35,7 @@ Importante notare che le relazioni devono essere definite su gli stessi attribut
 | 9824 | Verdi | 38 |
 
 #### Unione
-L'unione di due relazioni $r_1$ e $r_2$ definite sullo stesso insieme $X$ di attributi è una relazione ancora su $X$ contentente le tuple che appartengono a $r_1$, oppure ad $r_2$, oppure ad entrambe. È indicata con 
+L'unione di due relazioni $r_1$ e $r_2$ definite sullo stesso insieme $X$ di attributi è una relazione ancora su $X$ contenente le tuple che appartengono a $r_1$, oppure ad $r_2$, oppure ad entrambe. È indicata con 
 $$r_1 \cup r_2$$ 
 
 | Matricola | Cognome | Età |
@@ -55,7 +55,7 @@ $$r_1 \cap r_2$$
 | 9824 | Verdi | 28 |
 
 #### Differenza
-La differenza di $r_1(X)$ e $r_2(X)$ è una relazione su $X$ contentene le tuple che appartengono ad $r_1$ e non appartengono ad $r_2$. 
+La differenza di $r_1(X)$ e $r_2(X)$ è una relazione su $X$ contenente le tuple che appartengono ad $r_1$ e non appartengono ad $r_2$. 
 È indicata con 
 $$r_1 - r_2$$
 
@@ -64,7 +64,7 @@ $$r_1 - r_2$$
 | 7274 | Rossi | 37 |
 
 ### Operatori specifici
-#### Ridenominazione
+#### Ri-denominazione
 Cambia i nomi degli attributi a seconda delle necessità, al fine di superare le limitazioni imposte agli operatori insiemistici. 
 | Padre | Figlio | 
 | Madre | Figlio | 

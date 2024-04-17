@@ -2,7 +2,7 @@
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Comandi</title>
+            <title>Progettazione di una base di dati</title>
             <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -815,118 +815,76 @@ hue-6-2: #e6c07b
         
         </head>
         <body class="vscode-body vscode-light">
-            <h1 id="comandi">Comandi</h1>
-<p><code>/usr/local/mysql/bin/mysql -u root -p</code>
-show databases
-create database database_name
-use database_name
-show tables
-create tables (
-attribute_name data_type,
-);
-describe table_name
-insert into table_name value ( attribute_name data_type);
-select * from table_name
-select attribute_name from table_name
-select * attribute_name from table_name where attribute_name = &quot;value&quot;;</p>
-<h2 id="comandi-più-utilizzati-di-sql">Comandi più utilizzati di SQL</h2>
-<p>&quot;Code&quot;</p>
-<h1 id="tipi-di-dati">Tipi di dati</h1>
-<ol>
-<li>Character</li>
-<li>Bit</li>
-<li>Tipi numerici esatti (auto-increment)</li>
-<li>Tipi numerici approssimati</li>
-<li>Data e ora (istante di tempo, timestamp)</li>
-<li>Intervalli temporanei (intervallo)</li>
-</ol>
-<h2 id="characters">Characters</h2>
-<p>Rappresenta singoli caratteri o stringhe</p>
-<p><code>character [varying] [(lunghezza)]</code>
-<code>character(20)</code>
-Lunghezza variabile: <code>character varying(100)</code>
-<code>character(20) character set</code></p>
-<h2 id="bit">Bit</h2>
-<p>Assume solo valori 0 e 1</p>
-<pre><code>bit [varying] [(lunghezza)]
-</code></pre>
-<h2 id="intervalli-temporali">Intervalli Temporali</h2>
-<pre><code>interval UnitàDiTempo1 [(Precisione)] [to UnitàDiTempo 2 [(Precisione)]]
-</code></pre>
-<p>Si usano intervalli nei 2 sottointervalli [year, month] e [day,second]</p>
-<pre><code>interval day(4 to second(6)) rappresenta l'intervallo [0,10000) giorni e secondi con precisione al milionesimo di s
-</code></pre>
-<h2 id="tipi-numerici-esatti">Tipi numerici esatti</h2>
-<p>Valori interi con parte decimale di lunghezza prefissata</p>
-<pre><code class="language-sql"><span class="hljs-type">numeric</span> [(Precisione [,Scala])]
-<span class="hljs-type">decimal</span> [(Precisione [,Scala])] <span class="hljs-comment">--virgola fissa</span>
-<span class="hljs-type">integer</span>
-<span class="hljs-type">smallint</span>
-
-<span class="hljs-comment">--Esempio: </span>
-<span class="hljs-type">decimal</span>(<span class="hljs-number">4</span>) <span class="hljs-comment">--numeri da -9999 a 9999 </span>
-<span class="hljs-type">numeric</span>(<span class="hljs-number">6</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">--numeri da -999.999 a 999.999</span>
-</code></pre>
-<h2 id="tipi-numerici-approssimati">Tipi numerici approssimati</h2>
-<pre><code class="language-sql"><span class="hljs-type">float</span> [(Precisione)]
-double_precision
-<span class="hljs-type">real</span>
-</code></pre>
-<h2 id="data-e-ora">Data e ora</h2>
-<pre><code class="language-sql"><span class="hljs-type">date</span>
-<span class="hljs-type">time</span> [(Precisione)][<span class="hljs-keyword">with</span> <span class="hljs-type">time</span> zone]
-<span class="hljs-type">timestamp</span> [(Precisione)][<span class="hljs-keyword">with</span> <span class="hljs-type">time</span> zone]
-</code></pre>
-<p>Ciascun tipo è divisibile in campi.</p>
-<pre><code class="language-sql"><span class="hljs-type">date</span> <span class="hljs-comment">--ammette campi year, month e day</span>
-<span class="hljs-type">time</span> <span class="hljs-comment">--ammette campi hour, minute, second</span>
-<span class="hljs-type">timestamp</span> <span class="hljs-comment">--ammette tutti i campi da year a second</span>
-
-<span class="hljs-number">20</span>:<span class="hljs-number">03</span>:<span class="hljs-number">04</span><span class="hljs-operator">+</span><span class="hljs-number">1</span>:<span class="hljs-number">00</span> <span class="hljs-comment">-- I campi sono divisi da &quot;:&quot;</span>
-</code></pre>
-<p>I campi sono divisi da &quot;:&quot;</p>
-<h2 id="definizione-di-domini">Definizione di domini</h2>
-<p>È possibile definire custom data types, chiamati domini
-Basai su tipi di dati già esistenti.</p>
-<pre><code class="language-sql"><span class="hljs-keyword">create</span> domain NomeDominio <span class="hljs-keyword">as</span> TipodiDato [ValDefault] [Vincolo]
-</code></pre>
-<p>Non esiste il concetto di variabile strutturata: array = serie di tuple</p>
+            <link href="styles.css" rel="stylesheet"></link>
+<h1 id="progettazione-di-una-base-di-dati">Progettazione di una base di dati</h1>
+<h2 id="ciclo-di-vita-di-un-sistema-informativo">Ciclo di vita di un sistema informativo</h2>
 <ul>
-<li>Se modifico la definizione di un dominio, di fatto riscrivendo lo stesso comando visto in precedenza, la modifica si propaga su tutte le tabelle, con eventuali errori.</li>
+<li><strong>Studio di fattibilità:</strong> Definisce le varie alternative possibili, i
+relativi costi e le priorità di realizzazione</li>
+<li><strong>Raccolta e analisi dei requisiti:</strong> Individua proprietà e
+funzionalità del sistema tramite l’interazione con gli utenti e la
+definizione informale dei dati e delle operazioni</li>
+<li><strong>Progettazione:</strong> Divisa in progettazione dei dati e
+progettazione delle applicazioni. Individua la struttura e
+organizzazione dei dati e le caratteristiche degli applicativi
+che vi dovranno accedere</li>
+<li><strong>Implementazione:</strong> Realizza la base di dati e il codice dei
+programmi conformemente alle specifiche</li>
+<li><strong>Validazione e collaudo:</strong> Verifica il corretto funzionamento del
+sistema informativo</li>
+<li><strong>Funzionamento:</strong> Il sistema informativo diviene operativo</li>
 </ul>
-<pre><code class="language-sql"><span class="hljs-keyword">create</span> domain Voto <span class="hljs-keyword">as</span> <span class="hljs-type">smallint</span>
-<span class="hljs-keyword">default</span> <span class="hljs-keyword">null</span>
-<span class="hljs-keyword">check</span> (<span class="hljs-keyword">value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">18</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">value</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-number">30</span>)
-</code></pre>
-<h2 id="definizione-di-schemi">Definizione di schemi</h2>
-<p>È possibile definire uno schema di base di dati come collezione di oggetti.</p>
-<pre><code class="language-sql"><span class="hljs-keyword">create</span> [database <span class="hljs-operator">|</span> schema] [IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>] db_name [create_option]
-
-create_option: [<span class="hljs-keyword">DEFAULT</span>] {
-<span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> [<span class="hljs-operator">=</span>] charset_name <span class="hljs-operator">|</span>
-<span class="hljs-keyword">COLLATE</span> [<span class="hljs-operator">=</span>] collation_name <span class="hljs-operator">|</span> 
-ENCRYPTION [<span class="hljs-operator">=</span>] {<span class="hljs-string">&#x27;Y&#x27;</span> <span class="hljs-operator">|</span> <span class="hljs-string">&#x27;N&#x27;</span>} }
-</code></pre>
-<h2 id="definizione-di-tabelle">Definizione di tabelle</h2>
-<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> &quot;NomeTabella&quot; (
-NomeAttributo Dominio [<span class="hljs-keyword">default</span> ValDefault] [Vincoli] 
-)
-</code></pre>
-<p>Una tabella è inizialmente vuota e chi la crea possiede tutti i diritti su di essa</p>
-<h2 id="valori-di-default">Valori di default</h2>
-<p>Un nuovo default sostituisce il precedente, posso metterlo nella definizione della tabella, esiste l'istruzione set default che viene inserita nell'istruzione alter table in cui è compreso set default</p>
-<pre><code class="language-sql"><span class="hljs-keyword">default</span>
-</code></pre>
-<h2 id="vincoli-intra-relazionali">Vincoli intra-relazionali</h2>
-<p>not null indica che il valore nullo non è ammesso su uno specifico attributo
-Si impone che sia inserito in ogni caso un valore, salvo che non sia già definito un valore di dafeault
-Sql non distingue i diversi tipi di valore nullo. se è necessario ,bisogna definire opportuni domini.
-come detto il valore nullo indica una generica mancanza di informazione
-unique indica che l'insieme di attributi deve essere una superchiave per la tabella.
-primary_key definisce la chiave primaria. Può e deve essere definita una sola chiave primaria per ogni tabella.
-Tutti gli attributi delal chiave primaria sono automaticamente <code>not null</code>
-code</p>
-<p>code</p>
+<h2 id="metodologie-di-progettazione">Metodologie di progettazione</h2>
+<p>Una <strong>metodologia di progettazione</strong> è un algoritmo atto a sviluppare correttamente una base di dati.
+Esempi di metodologie sono:</p>
+<ul>
+<li><strong>Metodologia top-down:</strong> viene generato un sistema in cui ogni concetto ha una sua complessità, si parte quindi da una definizione ad alto livello di astrazione.</li>
+<li><strong>Metodologia bottom-up:</strong> si parte da un livello specifico di generalizzazione, fino a ricostruire un alto livello di astrazione.</li>
+</ul>
+<h2 id="metodologia-di-valutazione">Metodologia di valutazione</h2>
+<ul>
+<li><strong>Generalità:</strong> il prodotto realizzato deve garantire la possibilità di utilizzare una metodologia indipendentemente dal problema affrontato.</li>
+<li><strong>Qualità del prodotto:</strong> (correttezza, completezza, efficienza).</li>
+<li><strong>Facilità di utilizzo:</strong> il prodotto realizzato deve essere facilmente usufruibile.</li>
+</ul>
+<h2 id="fasi-della-progettazione">Fasi della progettazione</h2>
+<ol>
+<li>Raccolta delle <strong>specifiche</strong></li>
+<li>Progettazione <strong>concettuale</strong></li>
+<li>Progettazione <strong>logica</strong></li>
+<li>Progettazione <strong>fisica</strong></li>
+</ol>
+<h3 id="raccolta-delle-specifiche">Raccolta delle specifiche</h3>
+<p>È una fase in cui si raccolgono <strong>dati</strong> e <strong>appunti</strong>, parzialmente formalizzati, e in cui si osservano le relazioni causa-effetto che risiedono tra i dati.</p>
+<ul>
+<li>Quali concetti o quali dati, da riunire poi nella descrizione di diversi concetti si devono rappresentare?</li>
+<li>Quali relazioni logiche li collegano?</li>
+<li>In quali situazioni e quanto spesso si usano?</li>
+</ul>
+<p><strong>Specifiche:</strong> requisiti definiti in modo informale che il sistema dovrà soddisfare, servono a verificare che lo schema contenga tutte le informazioni necessarie alla loro esecuzione. Si distinguono:</p>
+<ol>
+<li>Specifiche sui dati</li>
+<li>Specifiche sulle operazioni</li>
+</ol>
+<h3 id="progettazione-concettuale">Progettazione concettuale</h3>
+<p>Sintetizzazione delle specifiche raccolte attraverso un modello formale.
+Finalizzata alla progettazione dei dati, definisce cosa verrà inserito nella base dei dati. Si divide nei seguenti steps:</p>
+<ul>
+<li><strong>Studio di fattibilità:</strong> si studiano alternative possibili, si valutano i costi e le priorità di realizzazioni.</li>
+<li><strong>Raccolta e analisi dei requisiti:</strong> Fase in cui si raggiungono le specifiche per realizzare la base di dati, bisogna definire, ancora in modo astratto le funzionalità del sistema tramite l'interazione con gli utenti e la definizione informale dei dati e delle operazioni.</li>
+</ul>
+<h3 id="progettazione-logica">Progettazione logica</h3>
+<p>Utilizza le informazioni descritte nella progettazione concettuale per la progettazione del prodotto fisico con tutti i relativi modelli, accessibile e funzionale. Individua la struttura e organizzazione dei dati e le caratteristiche degli applicativi che vi dovranno accedere.</p>
+<ul>
+<li><strong>Progettazione dei dati:</strong></li>
+<li><strong>Progettazione delle applicazioni:</strong></li>
+</ul>
+<h3 id="implementazione">Implementazione</h3>
+<p>Realizza la base dei dati e il codice dei programmi conformemente alle specifiche</p>
+<h3 id="validazione-e-collaudo">Validazione e collaudo</h3>
+<p>Verifica il corretto funzionamento del sistema informativo realizzato</p>
+<h3 id="funzionamento">Funzionamento</h3>
+<p>Il sistema informativo viene resto operativo</p>
 
             
             

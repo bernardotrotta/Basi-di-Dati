@@ -136,3 +136,13 @@ Tutti gli attributi delal chiave primaria sono automaticamente ```not null```
 ```sql
 select
 ```
+## Vincoli inter-relazionali
+- Vincoli relativi ad una singola tabella
+Vincolo di integrità referenziale
+```sql
+
+```
+
+## Vincoli 
+- Implicano collegamenti logici tra tabelle diverse, tabella interna (in usp) e tabella esterna.
+
